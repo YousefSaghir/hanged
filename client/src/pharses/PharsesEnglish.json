@@ -1,0 +1,336 @@
+[
+  {
+    "ph": "The best is yet to come.",
+    "author": "Charlotte Brontë",
+    "id": 1
+  },
+  {
+    "ph": "Let life surprise you.",
+    "author": "Charlotte Brontë",
+    "id": 2
+  },
+  {
+    "ph": "Do what you love.",
+    "author": "Cesare Pavese",
+    "id": 3
+  },
+  {
+    "ph": "You miss 100% of the shots you don’t take.",
+    "author": "Cesare Pavese",
+    "id": 4
+  },
+  {
+    "ph": "Prove them wrong.",
+    "author": "Wayne Gretzky",
+    "id": 5
+  },
+  {
+    "ph": "Life is what we make of it.",
+    "author": "Fernando Pessoa",
+    "id": 6
+  },
+  {
+    "ph": "You are your only limit.",
+    "author": "Lewis Carroll",
+    "id": 7
+  },
+  {
+    "ph": "Do it with passion or not at all.",
+    "author": "Fernando Pessoa",
+    "id": 8
+  },
+
+  {
+    "ph": "We become what we think about.",
+    "author": "Earl Nightingale",
+    "id": 12
+  },
+  {
+    "ph": "Life is what we make of it.",
+    "author": "Fernando Pessoa",
+    "id": 13
+  },
+
+  {
+    "ph": "An unexamined life is not worth living.",
+    "author": "Socrates",
+    "id": 18
+  },
+  {
+    "ph": "Eighty percent of success is showing up.",
+    "author": "Woody Allen",
+    "id": 19
+  },
+  {
+    "ph": "Start somewhere.",
+    "author": "Samuel Beckett",
+    "id": 20
+  },
+
+  {
+    "ph": "Winning isn’t everything, but wanting to win is.",
+    "author": "Vince Lombardi",
+    "id": 21
+  },
+  {
+    "ph": "Conquer from within.",
+    "author": "Samuel Beckett",
+    "id": 22
+  },
+
+  {
+    "ph": "Every moment is a fresh beginning.",
+    "author": "T. S. Eliot",
+    "id": 23
+  },
+  {
+    "ph": "We’re all mad here.",
+    "author": "Lewis Carroll",
+    "id": 24
+  },
+  {
+    "ph": "I would always rather be happy than dignified.",
+    "author": "Charlotte Brontë",
+    "id": 25
+  },
+  {
+    "ph": "Either you run the day, or the day runs you.",
+    "author": "Jim Rohn",
+    "id": 26
+  },
+
+  {
+    "ph": "The only joy in the world is to begin.",
+    "author": "Cesare Pavese",
+    "id": 28
+  },
+  {
+    "ph": "Never regret anything that made you smile.",
+    "author": "Mark Twain",
+    "id": 29
+  },
+  {
+    "ph": "The best revenge is massive success.",
+    "author": "Frank Sinatra",
+    "id": 30
+  },
+  {
+    "ph": "If you can dream it, you can do it.",
+    "author": "Walt Disney",
+    "id": 31
+  },
+
+  {
+    "ph": " do nothing, say nothing, and be nothing.",
+    "author": "Aristotle",
+    "id": 34
+  },
+  {
+    "ph": "Simplicity is the ultimate sophistication.",
+    "author": "Leonardo da Vinci",
+    "id": 35
+  },
+
+  {
+    "ph": "If you want to be happy, be.",
+    "author": "Lev Tolstoj",
+    "id": 38
+  },
+  {
+    "ph": "Try Again. Fail again. Fail better.",
+    "author": "Samuel Beckett",
+    "id": 39
+  },
+
+  {
+    "ph": "All we have is now.",
+    "author": "Oscar Wilde",
+    "id": 42
+  },
+  {
+    "ph": "I am not young enough to know everything.",
+    "author": "Oscar Wilde",
+    "id": 43
+  },
+
+  {
+    "ph": "My life is my message.",
+    "author": "Mahatma Gandhi",
+    "id": 46
+  },
+
+  {
+    "ph": "Fall seven times and stand up eight.",
+    "author": "Japanese Proverb",
+    "id": 47
+  },
+
+  {
+    "ph": "Everything has beauty, but not everyone can see.",
+    "author": "Confucius",
+    "id": 49
+  },
+  {
+    "ph": "Fun is a serious thing.",
+    "author": "Italo Calvino",
+    "id": 50
+  },
+
+  {
+    "ph": "Whatever you do, do it well.",
+    "author": "Walt Disney",
+    "id": 52
+  },
+
+  {
+    "ph": "Say less, do more.",
+    "author": "Sylvia Beach",
+    "id": 55
+  },
+
+  {
+    "ph": "If the wind will not serve, take to the oars.",
+    "author": "Latin Proverb",
+    "id": 56
+  },
+  {
+    "ph": "With great power comes great responsibility.",
+    "author": "Ben Parker",
+    "id": 57
+  },
+  {
+    "ph": "Different is beautiful.",
+    "author": "Sylvia Beach",
+    "id": 58
+  },
+
+  {
+    "ph": "I am a citizen of the world.",
+    "author": "Sylvia Beach",
+    "id": 60
+  },
+
+  {
+    "ph": "Silence is an answer too.",
+    "author": "Oliver Wendell Holmes",
+    "id": 62
+  },
+  {
+    "ph": "All limitations are self-imposed.",
+    "author": "Oliver Wendell Holmes",
+    "id": 63
+  },
+  {
+    "ph": "Whatever you are, be a good one.",
+    "author": "Abraham Lincoln",
+    "id": 64
+  },
+  {
+    "ph": "There is no substitute for hard work.",
+    "author": "Thomas Edison",
+    "id": 65
+  },
+
+  {
+    "ph": "If you’re going through hell, keep going.",
+    "author": "Winston Churchill",
+    "id": 67
+  },
+
+  {
+    "ph": "Everything you can imagine is real.",
+    "author": "Pablo Picasso",
+    "id": 69
+  },
+
+  {
+    "ph": "There are no traffic jams along the extra mile.",
+    "author": "Roger Staubach",
+    "id": 70
+  },
+
+  {
+    "ph": "You become what you believe.",
+    "author": "Oprah Winfrey",
+    "id": 72
+  },
+  {
+    "ph": "I would rather die of passion than of boredom.",
+    "author": "Vincent van Gogh",
+    "id": 73
+  },
+
+  {
+    "ph": "Save me from my mind",
+    "author": "Pablo Picasso",
+    "id": 75
+  },
+  {
+    "ph": "If I can’t dance to it, it’s not my revolution.",
+    "author": "Emma Goldman",
+    "id": 76
+  },
+
+  {
+    "ph": "Eyes talk.",
+    "author": "Emma Goldman",
+    "id": 78
+  },
+
+  {
+    "ph": "Mistakes are proof that you are trying.",
+    "author": "Emma Goldman",
+    "id": 80
+  },
+
+  {
+    "ph": "Happiness depends upon ourselves.",
+    "author": "Aristotele",
+    "id": 82
+  },
+
+  {
+    "ph": "Dream big and dare to fail.",
+    "author": "Norman Vaughan",
+    "id": 85
+  },
+
+  {
+    "ph": "Dreaming, after all, is a form of planning.",
+    "author": "Gloria Steinem",
+    "id": 89
+  },
+  {
+    "ph": "Wherever you go, go with all your heart.",
+    "author": "Confucio",
+    "id": 90
+  },
+
+  {
+    "ph": "Old ways won’t open news doors.",
+    "author": "Confucio",
+    "id": 95
+  },
+
+  {
+    "ph": "Change your thoughts and you change your world.",
+    "author": "Norman Vincent Peale",
+    "id": 97
+  },
+
+  {
+    "ph": "If you can dream it, you can achieve it.",
+    "author": "Zig Ziglar",
+    "id": 101
+  },
+  {
+    "ph": "Find what you love and let it kill you.",
+    "author": "Charles Bukowski",
+    "id": 102
+  },
+  {
+    "ph": "Never stop dreaming.",
+    "author": "Charles Bukowski",
+    "id": 103
+  }
+]
