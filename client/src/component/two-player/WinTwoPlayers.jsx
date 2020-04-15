@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function LostTwoPlayer({ duration, msg, pharse, name, field }) {
+export default function WinTwoPlayers({ duration, msg, pharse, name, field }) {
   return (
     <div className="d-flex flex-column">
       {msg !== undefined ? (
@@ -20,10 +20,10 @@ export default function LostTwoPlayer({ duration, msg, pharse, name, field }) {
         </div>
       ) : null}
       <div className="col-12   position-relative">
-        <h3 className="text-center text-info">{` You Lose in  ${duration}`}</h3>
+        <h3 className="text-center text-info">{` You Win in  ${duration}`}</h3>
         <img
-          src="img/game-over.jpg"
-          alt="you lose"
+          src="img/win-01.jpg"
+          alt="you win"
           className="img-fluid img-thumbnail"
         />
         <h2 className="text-center text-danger text-uppercase">

@@ -1,36 +1,49 @@
-.container-join {
-  padding: 0 !important;
-  margin: 0% !important;
-  background-image: radial-gradient(rgba(1, 154, 255, 0.74), rgb(4, 4, 196));
-  position: relative !important;
+.nav-join {
+  height: auto;
+  line-height: 50px;
+  background-color: #2980b9;
+}
+.nav-join span {
+  font-size: 1rem;
+  cursor: pointer;
+  color: #ecf0f1;
+  line-height: 17px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
-.container-fluid .row {
-  position: relative !important;
-  top: 25% !important;
+.join-container {
+  height: 100vh;
+  transition: all 1s linear;
+  overflow: hidden;
+}
+.join-container-item {
+  width: 300%;
+  height: 100%;
+  flex-direction: row;
+  transition: all 0.75s linear;
+}
+.slide-join {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  align-content: space-around;
+  justify-content: center;
 }
 
-.container-fluid i {
-  font-size: 2.2rem;
-  margin-left: 3%;
+.slide-join h1 {
+  color: #2980b9;
+}
+.slide-join i {
+  font-size: 1.5rem !important;
+}
+.active {
+  transform: translateX(-33.333%);
+}
+.active1 {
+  transform: translateX(-66.666%);
 }
 
-.card {
-  opacity: 0.5;
-  -moz-transform: scale(0.85);
-  -webkit-transform: scale(0.85);
-  -o-transform: scale(0.85);
-  transform: scale(0.85);
-  -moz-transition: all 1s linear;
-  -webkit-transition: all 1s linear;
-  -o-transition: all 1s linear;
-  transition: all 0.7s linear;
-}
-
-.card:hover {
-  opacity: 1;
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  transform: scale(1.1);
+.nav-active {
+  border-bottom: 4px solid #c0392b;
 }

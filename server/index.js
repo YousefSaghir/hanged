@@ -54,7 +54,7 @@ io.sockets.on("connection", visitor => {
       players: getPlayerInField(player.field)
     });
 
-    // callback();
+   
   });
 
   visitor.on("put pharse", (pharse, callback) => {
@@ -68,6 +68,7 @@ io.sockets.on("connection", visitor => {
     visitor.broadcast.to(player.field).emit("result", result);
   });
 
+  
   // two players
 
   visitor.on("two players", ({ name, field }, callback) => {

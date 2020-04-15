@@ -14,7 +14,7 @@ export default function Players({ location }) {
   const [players, setPlayers] = useState({});
   const [result, setResult] = useState({});
 
-  const POINT = "localhost:3200";
+  const POINT = "https://impeccato.herokuapp.com/";
 
   useEffect(() => {
     const { name, field } = queryString.parse(location.search);
@@ -25,20 +25,20 @@ export default function Players({ location }) {
 
     socket = io(POINT);
 
-    socket.emit("two players", { name, field }, err => {
+    socket.emit("two players", { name, field }, (err) => {
       if (err) {
         alert("Sorry this Field had two players");
         setError(true);
       }
     });
 
-    socket.on("welcome two players", message => {
+    socket.on("welcome two players", (message) => {
       console.log(message);
     });
   }, [POINT, location.search]);
 
   useEffect(() => {
-    socket.on("twoPlayers pharse", newPharse => {
+    socket.on("twoPlayers pharse", (newPharse) => {
       setBost(newPharse);
     });
 
@@ -46,7 +46,7 @@ export default function Players({ location }) {
       setPlayers(players);
     });
 
-    socket.on("resultTwoPlayers", result => {
+    socket.on("resultTwoPlayers", (result) => {
       setResult(result);
     });
 
@@ -56,7 +56,7 @@ export default function Players({ location }) {
     };
   }, [pharse]);
 
-  const sendPharse = e => {
+  const sendPharse = (e) => {
     e.preventDefault();
     if (pharse) {
       socket.emit("twoPlayers put pharse", pharse, () => setPharse(""));
@@ -65,7 +65,7 @@ export default function Players({ location }) {
     }
   };
 
-  const sendResult = result => {
+  const sendResult = (result) => {
     socket.emit("send resultTwoPlayers", result);
   };
 
@@ -78,16 +78,14 @@ export default function Players({ location }) {
           </Route>
         </div>
       ) : number > 0 && bost ? (
-        <div className="row">
-          <StartTwoPlayer
-            bostTwo={bost}
-            name={name}
-            field={field}
-            sendResult={sendResult}
-            players={players}
-            result={result}
-          />
-        </div>
+        <StartTwoPlayer
+          bostTwo={bost}
+          name={name}
+          field={field}
+          sendResult={sendResult}
+          players={players}
+          result={result}
+        />
       ) : (
         <div className="col-12">
           <form>
@@ -97,7 +95,7 @@ export default function Players({ location }) {
                 type="text"
                 className="form-control input-block"
                 placeholder="Enter a Pharse"
-                onChange={e => setPharse(e.target.value)}
+                onChange={(e) => setPharse(e.target.value)}
                 value={pharse}
               />
               <small className="form-text text-muted">
@@ -112,7 +110,7 @@ export default function Players({ location }) {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={e => sendPharse(e)}
+              onClick={(e) => sendPharse(e)}
             >
               Send
             </button>

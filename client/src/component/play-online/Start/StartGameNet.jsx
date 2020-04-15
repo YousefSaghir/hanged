@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import ErrorLetters from "../ErrorLetters";
-import Letters from "../Letters";
-import "./StartGameNet.css";
+import WinPlayOnline from "../WinPlayOnline";
+import GameOver from "../GameOver";
 import { images } from "../../../data.js";
-import LettersPuzzl from "../LettersPuzzl";
 import * as moment from "moment";
+import AlphabetsEng from "../../alphabets/AlphabetsEng";
+import AlphabetsPuzzle from "../../alphabetsPuzzle/AlphabetsPuzzle";
+import ImgPuzzle from "../../imagePuzzle/ImgPuzzle";
 export default class StartGameNet extends Component {
   state = {
     letters: [
@@ -39,7 +40,7 @@ export default class StartGameNet extends Component {
       "é",
       "ù",
       "ò",
-      "ì"
+      "ì",
     ],
     newArray: [],
     booleanArray: [],
@@ -51,24 +52,24 @@ export default class StartGameNet extends Component {
     resLettre: [],
     dateStart: {},
     dateEnd: {},
-    dur: {}
+    dur: {},
   };
 
   componentDidMount() {
     let { myBost } = this.props;
     this.setState({
-      dateStart: new Date()
+      dateStart: new Date(),
     });
     let newArray = this.state.newArray;
     newArray = myBost
       .trim()
       .split("")
-      .map(item => {
+      .map((item) => {
         return item === " " ? (item = "/") : item;
       });
     this.setState({ newArray });
     let booleanArray = this.state.booleanArray.slice();
-    booleanArray = newArray.map(item => item === "/");
+    booleanArray = newArray.map((item) => item === "/");
     this.setState({ booleanArray });
   }
   handleClick = (e, ind) => {
@@ -77,24 +78,24 @@ export default class StartGameNet extends Component {
     let letters = this.state.letters.slice();
     let newArray = this.state.newArray.slice();
     let num = newArray.findIndex(
-      char => char.toLowerCase() === e.toLowerCase()
+      (char) => char.toLowerCase() === e.toLowerCase()
     );
 
     if (num >= 0) {
       let foundLetters = this.state.foundLetters;
       foundLetters.push(e);
       this.setState({
-        foundLetters
+        foundLetters,
       });
       letters.splice(ind, 1);
       this.setState({
-        letters
+        letters,
       });
 
       let val = this.checkChar(this.state.foundLetters, this.state.newArray);
 
       this.setState({
-        booleanArray: val
+        booleanArray: val,
       });
     } else {
       let errorLetter = this.state.errorLetter;
@@ -102,7 +103,7 @@ export default class StartGameNet extends Component {
       letters.splice(ind, 1);
       this.setState({
         letters,
-        errorLetter
+        errorLetter,
       });
       let imageGroup = this.state.imageGroup;
       let len = imageGroup.length;
@@ -112,14 +113,16 @@ export default class StartGameNet extends Component {
       } else {
         this.setState({
           finish: true,
-          dateEnd: new Date()
+          dateEnd: new Date(),
         });
 
         let a = moment(this.state.dateStart);
         let b = moment(this.state.dateEnd);
         dur = {
-          time: `minutes: 0${b.diff(a, "minutes")}:${b.diff(a, "seconds") % 60}`,
-          msg: `${this.props.name} is lose in`
+          time: `minutes: 0${b.diff(a, "minutes")}:${
+            b.diff(a, "seconds") % 60
+          }`,
+          msg: `${this.props.name} is lose in`,
         };
         this.setState({ dur });
         sendMsg(dur);
@@ -127,20 +130,20 @@ export default class StartGameNet extends Component {
     }
     let checkBooleanArray = this.checkChar(
       letters,
-      newArray.filter(item => item !== "/")
+      newArray.filter((item) => item !== "/")
     );
 
-    if (checkBooleanArray.findIndex(it => it === true) < 0) {
+    if (checkBooleanArray.findIndex((it) => it === true) < 0) {
       this.setState({
         win: true,
-        dateEnd: new Date()
+        dateEnd: new Date(),
       });
 
       let a = moment(this.state.dateStart);
       let b = moment(this.state.dateEnd);
       dur = {
         time: `minutes: 0${b.diff(a, "minutes")}:${b.diff(a, "seconds") % 60}`,
-        msg: `${this.props.name} is win in `
+        msg: `${this.props.name} is win in `,
       };
       this.setState({ dur });
       sendMsg(dur);
@@ -165,85 +168,57 @@ export default class StartGameNet extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-12 text-center">
-          <span className="p-3 text-primary">
+      <React.Fragment>
+        <div className="d-flex justify-content-center flex-wrap text-center container-header">
+          <span className="p-2 text-capitalize">
             {this.props.players[0].name === this.props.name
               ? "You"
               : this.props.players[0].name}
           </span>
-          <span className="p-3 text-danger">VS</span>
-          <span className="p-3 text-primary">
+          <span className="p-2 ">VS</span>
+          <span className="p-2 text-capitalize">
             {this.props.players[1].name === this.props.name
               ? "You"
               : this.props.players[1].name}
           </span>
-          {this.props.result.msg !== undefined ? (
-            <p>{`${this.props.result.msg} ${this.props.result.time}`}</p>
-          ) : null}
         </div>
+        {this.props.result.msg !== undefined ? (
+          <p className="text-center text-danger text-capitalize">{`${this.props.result.msg} ${this.props.result.time}`}</p>
+        ) : null}
+
         {this.state.newArray.length > 0 &&
         this.state.win === false &&
         this.state.finish === false ? (
           <div className="row pt-5">
-            <ErrorLetters errorLetter={this.state.errorLetter} />
-            <Letters
-              letters={this.state.letters}
+            <ImgPuzzle
+              imageGroup={this.state.imageGroup}
+              name={this.props.name}
+            />
+
+            <AlphabetsEng
+              alphabets={this.state.letters}
               handleClick={this.handleClick}
             />
-              <div className="col-md-3 col-9 pt-3" id="container-img">
-              <img src="img/base2.png" alt="" className="card-img-top" />
-              {this.state.imageGroup.map(img => {
-                return (
-                  <React.Fragment key={img.id}>
-                    <img
-                      src={img.img}
-                      className={img.name + "  position-absolute"}
-                      alt={img.name}
-                    />
-                  </React.Fragment>
-                );
-              })}
-            </div>
-            <LettersPuzzl
-              newArray={this.state.newArray}
+
+            <AlphabetsPuzzle
+              pharse={this.state.newArray}
               booleanArray={this.state.booleanArray}
             />
           </div>
         ) : this.state.finish === true ? (
-          <div className="row finish">
-            <div className="col-12  position-relative">
-              <h1 className="text-center text-danger  text-uppercase">
-                {this.props.name} <br />
-              </h1>
-              <h3 className="text-center text-info">{` You Lose in  ${this.state.dur.time}`}</h3>
-              <img src="img/lose.jpg" style={{ width: "100%" }} alt="you win" />
-              <h2 className="text-center text-danger text-uppercase">
-                <br />
-                the pharse is: {this.props.myBost}
-              </h2>
-            </div>
-          </div>
+          <GameOver
+            duration={this.state.dur.time}
+            name={this.props.name}
+            pharse={this.props.myBost}
+          />
         ) : this.state.win === true ? (
-          <div className="row win">
-            <div className="col-12  position-relative">
-              <h1 className="text-center text-danger  text-uppercase">
-                {this.props.name} <br />
-              </h1>
-              <h3>{` You Win in  ${this.state.dur.time}`}</h3>
-              <img
-                src="img/win-01.jpg"
-                style={{ width: "100%" }}
-                alt="you win"
-              />
-              <h2 className="text-center text-danger text-uppercase">
-                <br />
-                the pharse is: {this.props.myBost}
-              </h2>
-            </div>
-          </div>
+          <WinPlayOnline
+            duration={this.state.dur.time}
+            name={this.props.name}
+            pharse={this.props.myBost}
+          />
         ) : null}
-      </div>
+      </React.Fragment>
     );
   }
 }

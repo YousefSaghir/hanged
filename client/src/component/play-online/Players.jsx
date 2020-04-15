@@ -7,21 +7,21 @@ export default function Players({ location }) {
   const [name, setName] = useState("");
   const [even, seteven] = useState(false);
   const [pharse, setPharse] = useState("");
-  const [bost, setBost] = useState("");
+  const [bost, setBost] = useState("Hello World");
   const [result, setResult] = useState({});
   const [leave, setLeave] = useState({});
   const [count, setCount] = useState(0);
   const [secondCount, setSecondCount] = useState(60);
   const [players, setPlayers] = useState([]);
-  const POINT = "localhost:3200";
+  const POINT = "https://impeccato.herokuapp.com/";
 
   useEffect(() => {
     const { name } = queryString.parse(location.search);
-
+    console.log(name);
     setName(name);
     socket = io(POINT);
 
-    socket.emit("new player", name, err => {
+    socket.emit("new player", name, (err) => {
       if (err) alert(err);
     });
     socket.on("welcome", (message, isTrue) => {
@@ -33,32 +33,31 @@ export default function Players({ location }) {
       seteven(isTrue);
     });
 
-    socket.on("fieldData", fieldPlayer => {
+    socket.on("fieldData", (fieldPlayer) => {
       setPlayers(fieldPlayer.players);
     });
   }, [POINT, location.search]);
   useEffect(() => {
-    socket.on("pharse", newPharse => {
+    socket.on("pharse", (newPharse) => {
       setBost(newPharse);
     });
 
-    socket.on("result", result => {
+    socket.on("result", (result) => {
       setResult(result);
     });
   }, [pharse, result]);
-  const sendPharse = e => {
+  const sendPharse = (e) => {
     e.preventDefault();
     socket.emit("put pharse", pharse, () => setPharse(""));
   };
-  const sendMsg = result => {
+  const sendMsg = (result) => {
     console.log(result);
 
     socket.emit("send result", result);
   };
 
   const timeOut = () => {
-    
-    let n = 30;
+    let n = 20;
     setInterval(() => {
       n--;
       setSecondCount(n);
@@ -66,11 +65,11 @@ export default function Players({ location }) {
 
     setTimeout(() => {
       setCount(1);
-    }, 30000);
+    }, 20000);
   };
 
   useEffect(() => {
-    socket.on("leaved", leavedMsg => {
+    socket.on("leaved", (leavedMsg) => {
       setLeave(leavedMsg);
     });
   }, [leave]);
@@ -106,14 +105,11 @@ export default function Players({ location }) {
               type="text"
               className="form-control"
               placeholder="Enter a Pharse"
-              onChange={e => setPharse(e.target.value)}
+              onChange={(e) => setPharse(e.target.value)}
               value={pharse}
             />
             <small className="form-text text-muted">
-              You have{" "}
-              <span className="text-danger">
-                {secondCount}
-              </span>{" "}
+              You have <span className="text-danger">{secondCount}</span>{" "}
               Seconds for write your pharse
             </small>
           </div>
@@ -121,7 +117,7 @@ export default function Players({ location }) {
           <button
             type="submit"
             className="btn btn-primary"
-            onClick={e => sendPharse(e)}
+            onClick={(e) => sendPharse(e)}
           >
             Submit
           </button>

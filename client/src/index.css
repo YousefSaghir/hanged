@@ -6,45 +6,56 @@
   -webkit-box-sizing: border-box !important;
 }
 
+body {
+  font-family: "Cairo", sans-serif;
+}
+.container-header {
+  color: #3498db;
+  font-size: 3rem !important;
+  text-shadow: 0 -1px 0 #2980b9, 0 -2px 0 #2980b9, 0 -3px 0 #2980b9,
+    0 -4px 0#2980b9, 0 -5px 0 #2980b9, 0 -6px 0 #2980b9,
+    0px -11px 7px rgba(3, 3, 3, 0.3);
+}
+
 #container-img {
   position: relative;
 }
 
 img.head {
-  width: 22%;
-  left: 84%;
-  top: 21%;
+  width: 20%;
+  left: 81%;
+  top: 18%;
 }
 img.body {
   width: 13%;
   height: auto;
-  top: 40%;
-  left: 88.5%;
+  top: 36%;
+  left: 84.5%;
 }
 img.eyes {
   width: 13%;
-  left: 88.5%;
-  top: 27%;
+  left: 84.5%;
+  top: 24%;
 }
 img.nose {
   width: 2%;
-  left: 94%;
-  top: 30%;
+  left: 90%;
+  top: 27%;
 }
 img.mouth {
-  width: 14%;
-  left: 88%;
-  top: 34%;
+  width: 11%;
+  left: 85.5%;
+  top: 32%;
 }
 img.hair {
-  width: 22%;
-  left: 84%;
-  top: 21%;
+  width: 20%;
+  left: 81%;
+  top: 18%;
 }
 img.arm-left {
   width: 32%;
-  left: 58%;
-  top: 38%;
+  left: 54%;
+  top: 33%;
   animation: greet-left 1s linear infinite alternate both;
   transform: rotate(-40deg);
   -webkit-transform: rotate(-40deg);
@@ -67,57 +78,28 @@ img.arm-left {
     -webkit-transform-origin: 100% 50%;
   }
 }
+span.careful {
+  left: 27%;
+  top: 24px;
+  font-weight: 900;
+  width: 50%;
+}
 img.arm-right {
   width: 32%;
-  left: 100%;
-  top: 38%;
+  top: 33%;
+  left: 96%;
   transform: rotate(-46deg);
   transform-origin: 0% 50%;
 }
 
 img.leg-left {
   width: 20%;
-  top: 65%;
-  left: 74%;
+  top: 62%;
+  left: 69%;
 }
 
 img.leg-rigth {
   width: 20%;
-  left: 96.5%;
-  top: 65%;
-}
-
-span {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-span.p-3 {
-  font-size: 11vh;
-}
-
-.careful {
-  font-size: 1rem;
-  width: 65%;
-  left: 17.5%;
-  text-align: center;
-  top: 15%;
-  border: 1px rgba(3, 3, 3, 0.5) solid;
-  padding: 1%;
-  border-radius: 5px;
-  animation: careful 1s infinite linear;
-  -webkit-animation: careful 1.5s infinite linear;
-}
-@keyframes careful {
-  100% {
-    text-shadow: 0 11px 14px #949292;
-    -webkit-transform: translateZ(15px);
-    transform: translateZ(15px);
-  }
-}
-@-webkit-keyframes careful {
-  100% {
-    text-shadow: 0 11px 14px #949292;
-    -webkit-transform: translateZ(15px);
-    transform: translateZ(15px);
-  }
+  left: 92.5%;
+  top: 62%;
 }

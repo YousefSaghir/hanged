@@ -1,16 +1,15 @@
 import React from "react";
 
-export default function LettersOfTwoPlayers(props) {
-  const { letters, handleClick } = props;
+export default function AlphabetsIt({ handleClick, alphabets }) {
   return (
-    <div className="col-md-8 col-12 pt-3">
+    <div className="col-md-6 offset-md-3 col-12 pt-3">
       <div className="container">
         <div className="row">
-          {letters.map((item, index) => {
+          {alphabets.map((item, index) => {
             return (
               <div
-                onClick={e => handleClick(e.target.textContent, index)}
-                className="col-2 btn btn-success m-2"
+                onClick={(e) => handleClick(e.target.textContent, index)}
+                className="col-1 px-0 btn btn-outline-dark m-2"
                 key={index}
               >
                 {item.toUpperCase()}

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import LettersOfTwoPlayers from "./LettersOfTwoPlayers";
-import LettersPuzzlTwoPlayers from "./LettersPuzzlTwoPlayers";
-import FalseLetters from "./FalseLetters";
 import { images } from "../../data.js";
 import * as moment from "moment";
 import HeaderTwoPLayers from "./HeaderTwoPLayers";
-import "./StartTwoPlayer.css";
+import LostTwoPlayer from "./LostTwoPlayer";
+import WinTwoPlayers from "./WinTwoPlayers";
+import AlphabetsEng from "../alphabets/AlphabetsEng";
+import AlphabetsPuzzle from "../alphabetsPuzzle/AlphabetsPuzzle";
+import ImgPuzzle from "../imagePuzzle/ImgPuzzle.jsx";
 export default class StartTwoPlayer extends Component {
   state = {
     letters: [
@@ -41,7 +41,7 @@ export default class StartTwoPlayer extends Component {
       "é",
       "ù",
       "ò",
-      "ì"
+      "ì",
     ],
     letterToArray: [],
     booleanArray: [],
@@ -53,24 +53,24 @@ export default class StartTwoPlayer extends Component {
     win: false,
     dateStart: {},
     dateEnd: {},
-    dur: {}
+    dur: {},
   };
   componentDidMount() {
     const { bostTwo } = this.props;
     this.setState({
-      dateStart: new Date()
+      dateStart: new Date(),
     });
 
     let letterToArray = this.state.letterToArray;
     letterToArray = bostTwo
       .trim()
       .split("")
-      .map(item => {
+      .map((item) => {
         return item === " " ? (item = "/") : item;
       });
     this.setState({ letterToArray });
     let booleanArray = this.state.booleanArray.slice();
-    booleanArray = letterToArray.map(item => item === "/");
+    booleanArray = letterToArray.map((item) => item === "/");
     this.setState({ booleanArray });
   }
   handleClick = (e, i) => {
@@ -80,7 +80,7 @@ export default class StartTwoPlayer extends Component {
     let letterToArray = this.state.letterToArray.slice();
     let trueLetters = this.state.trueLetters;
     let num = letterToArray.findIndex(
-      char => char.toLowerCase() === e.toLowerCase()
+      (char) => char.toLowerCase() === e.toLowerCase()
     );
     if (num >= 0) {
       trueLetters.push(letters[i]);
@@ -93,7 +93,7 @@ export default class StartTwoPlayer extends Component {
       letters.splice(i, 1);
       this.setState({
         letters,
-        falseLetters
+        falseLetters,
       });
       let imageGroup = this.state.imageGroup;
       let len = imageGroup.length;
@@ -103,15 +103,16 @@ export default class StartTwoPlayer extends Component {
       } else {
         this.setState({
           lose: true,
-          dateEnd: new Date()
+          dateEnd: new Date(),
         });
 
         const a = moment(this.state.dateStart);
         const b = moment(this.state.dateEnd);
         dur = {
-          time: `minutes: 0${b.diff(a, "minutes")}:${b.diff(a, "seconds") %
-            60}`,
-          msg: `${this.props.name} is lose in`
+          time: `minutes: 0${b.diff(a, "minutes")}:${
+            b.diff(a, "seconds") % 60
+          }`,
+          msg: `${this.props.name} is lose in`,
         };
         this.setState({ dur });
         sendResult(dur);
@@ -119,20 +120,20 @@ export default class StartTwoPlayer extends Component {
     }
     let checkBooleanArray = this.checkChar(
       letters,
-      letterToArray.filter(item => item !== "/")
+      letterToArray.filter((item) => item !== "/")
     );
 
-    if (checkBooleanArray.findIndex(it => it === true) < 0) {
+    if (checkBooleanArray.findIndex((it) => it === true) < 0) {
       this.setState({
         win: true,
-        dateEnd: new Date()
+        dateEnd: new Date(),
       });
 
       let a = moment(this.state.dateStart);
       let b = moment(this.state.dateEnd);
       dur = {
         time: `minutes: 0${b.diff(a, "minutes")}:${b.diff(a, "seconds") % 60}`,
-        msg: `${this.props.name} is win in `
+        msg: `${this.props.name} is win in `,
       };
       this.setState({ dur });
       sendResult(dur);
@@ -162,97 +163,47 @@ export default class StartTwoPlayer extends Component {
           result={this.props.result}
           name={this.props.name}
         />
+        {this.props.result.msg !== undefined ? (
+          <p className="text-center text-danger text-capitalize">{`${this.props.result.msg} ${this.state.dur.time}`}</p>
+        ) : null}
         {this.state.letterToArray.length > 0 &&
         this.state.lose === false &&
         this.state.win === false ? (
           <React.Fragment>
-            <FalseLetters falseLetters={this.state.falseLetters} />
-            <LettersOfTwoPlayers
-              letters={this.state.letters}
-              handleClick={this.handleClick}
-            />
-            <div className="col-md-3 col-9 pt-3" id="container-img">
-              <img src="img/base2.png" alt="" className="card-img-top" />
-              {this.state.imageGroup.map(img => {
-                return (
-                  <React.Fragment key={img.id}>
-                    <img
-                      src={img.img}
-                      className={img.name + "  position-absolute"}
-                      alt={img.name}
-                    />
-                  </React.Fragment>
-                );
-              })}
+            <div className="row">
+              
+
+              <ImgPuzzle
+                  imageGroup={this.state.imageGroup}
+                  name={this.props.name}
+              />
+
+              <AlphabetsEng
+                alphabets={this.state.letters}
+                handleClick={this.handleClick}
+              />
             </div>
-            <LettersPuzzlTwoPlayers
-              booleanArray={this.state.booleanArray}
-              letterToArray={this.state.letterToArray}
+            <AlphabetsPuzzle
+                booleanArray={this.state.booleanArray}
+                pharse={this.state.letterToArray}
             />
           </React.Fragment>
         ) : this.state.lose === true ? (
-          <div className="row finish">
-            {this.props.result.msg !== undefined ? (
-              <div className="col-12">
-                <Link
-                  to={`/two_players?name=${this.props.name}&field=${this.props.field}`}
-                  refresh="true"
-                  onClick={() => window.location.reload()}
-                >
-                  <button
-                    type="submit"
-                    className="btn btn-success btn-block mt-2"
-                  >
-                    play again
-                  </button>
-                </Link>
-              </div>
-            ) : null}
-            <div className="col-12  position-relative">
-              <h1 className="text-center text-danger  text-uppercase">
-                {this.props.name} <br />
-              </h1>
-              <h3 className="text-center text-info">{` You Lose in  ${this.state.dur.time}`}</h3>
-              <img src="img/lose.jpg" style={{ width: "100%" }} alt="you win" />
-              <h2 className="text-center text-danger text-uppercase">
-                <br />
-                the pharse is: {this.props.bostTwo}
-              </h2>
-            </div>
-          </div>
+          <LostTwoPlayer
+            duration={this.state.dur.time}
+            msg={this.props.result.msg}
+            pharse={this.props.bostTwo}
+            name={this.props.name}
+            field={this.props.field}
+          />
         ) : this.state.win === true ? (
-          <div className="col-12 slide-win">
-            {this.props.result.msg !== undefined ? (
-              <div className="col-12 ">
-                <Link
-                  to={`/two_players?name=${this.props.name}&field=${this.props.field}`}
-                  refresh="true"
-                  onClick={() => window.location.reload()}
-                >
-                  <button
-                    type="submit"
-                    className="btn btn-success btn-block mt-2"
-                  >
-                    play again
-                  </button>
-                </Link>
-              </div>
-            ) : null}
-
-            <div className="col-12  position-relative">
-              <h1 className="text-center text-danger  text-uppercase name-two">
-                {this.props.name} <br />
-              </h1>
-              <h3>{` You Win in  ${this.state.dur.time}`}</h3>
-              <h2 className="text-center text-capitalize text-light shadow-win">
-                You Won
-              </h2>
-              <h2 className="text-center text-danger text-uppercase">
-                <br />
-                the pharse is: {this.props.bostTwo}
-              </h2>
-            </div>
-          </div>
+          <WinTwoPlayers
+            duration={this.state.dur.time}
+            msg={this.props.result.msg}
+            pharse={this.props.bostTwo}
+            name={this.props.name}
+            field={this.props.field}
+          />
         ) : null}
       </React.Fragment>
     );
