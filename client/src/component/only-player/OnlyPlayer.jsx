@@ -10,70 +10,13 @@ import AlphabetsEng from "../alphabets/AlphabetsEng";
 import AlphabetsIt from "../alphabets/AlphabetsIt";
 import AlphabetsPuzzle from "../alphabetsPuzzle/AlphabetsPuzzle";
 import ImgPuzzle from "../imagePuzzle/ImgPuzzle";
+import Header from "../base/Header";
+import { lettersEn, lettersIt } from "../letters";
+import Footer from "../base/Footer";
 export default class OnlyPlayer extends Component {
   state = {
-    lettersIt: [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-      "à",
-      "è",
-      "é",
-      "ù",
-      "ò",
-      "ì",
-    ],
-    lettersEn: [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-    ],
+    lettersIt: lettersIt,
+    lettersEn: lettersEn,
     pharse: [],
     name: "",
     author: "",
@@ -232,13 +175,10 @@ export default class OnlyPlayer extends Component {
       <div className="container">
         {this.state.win === false && this.state.lose === false ? (
           <React.Fragment>
-            <div className="col-12 my-3 container-header">
-              <h2 className="text-center text-uppercase text-info">
-                {this.state.name}
-              </h2>
-            </div>
+            <Header name={this.state.name} />
+
             <hr />
-            <div className="row">
+            <div className="row my-md-5">
               <ImgPuzzle
                 imageGroup={this.state.imageGroup}
                 name={this.state.name}
@@ -283,6 +223,7 @@ export default class OnlyPlayer extends Component {
             />
           </React.Fragment>
         ) : null}
+        <Footer />
       </div>
     );
   }

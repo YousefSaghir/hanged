@@ -1,48 +1,17 @@
 import React, { Component } from "react";
 import { images } from "../../data.js";
 import * as moment from "moment";
-import HeaderTwoPLayers from "./HeaderTwoPLayers";
+import Header from "../base/Header";
 import LostTwoPlayer from "./LostTwoPlayer";
 import WinTwoPlayers from "./WinTwoPlayers";
 import AlphabetsEng from "../alphabets/AlphabetsEng";
 import AlphabetsPuzzle from "../alphabetsPuzzle/AlphabetsPuzzle";
 import ImgPuzzle from "../imagePuzzle/ImgPuzzle.jsx";
+import { lettersIt } from "../letters";
+import Footer from "../base/Footer.jsx";
 export default class StartTwoPlayer extends Component {
   state = {
-    letters: [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-      "à",
-      "è",
-      "é",
-      "ù",
-      "ò",
-      "ì",
-    ],
+    letters: lettersIt,
     letterToArray: [],
     booleanArray: [],
     trueLetters: [],
@@ -158,11 +127,8 @@ export default class StartTwoPlayer extends Component {
   render() {
     return (
       <React.Fragment>
-        <HeaderTwoPLayers
-          players={this.props.players}
-          result={this.props.result}
-          name={this.props.name}
-        />
+        <Header players={this.props.players} name={this.props.name} />
+        <hr />
         {this.props.result.msg !== undefined ? (
           <p className="text-center text-danger text-capitalize">{`${this.props.result.msg} ${this.state.dur.time}`}</p>
         ) : null}
@@ -170,12 +136,10 @@ export default class StartTwoPlayer extends Component {
         this.state.lose === false &&
         this.state.win === false ? (
           <React.Fragment>
-            <div className="row">
-              
-
+            <div className="row my-md-5">
               <ImgPuzzle
-                  imageGroup={this.state.imageGroup}
-                  name={this.props.name}
+                imageGroup={this.state.imageGroup}
+                name={this.props.name}
               />
 
               <AlphabetsEng
@@ -184,8 +148,8 @@ export default class StartTwoPlayer extends Component {
               />
             </div>
             <AlphabetsPuzzle
-                booleanArray={this.state.booleanArray}
-                pharse={this.state.letterToArray}
+              booleanArray={this.state.booleanArray}
+              pharse={this.state.letterToArray}
             />
           </React.Fragment>
         ) : this.state.lose === true ? (
@@ -205,6 +169,7 @@ export default class StartTwoPlayer extends Component {
             field={this.props.field}
           />
         ) : null}
+        <Footer />
       </React.Fragment>
     );
   }

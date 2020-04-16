@@ -11,12 +11,12 @@
   font-weight: 900;
   letter-spacing: 1px;
 }
-
 .join-container {
-  height: 100vh;
+  height: auto;
   transition: all 1s linear;
   overflow: hidden;
 }
+
 .join-container-item {
   width: 300%;
   height: 100%;

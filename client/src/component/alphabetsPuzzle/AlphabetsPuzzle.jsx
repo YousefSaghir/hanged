@@ -8,7 +8,7 @@ export default function AlphabetsPuzzle({ pharse, booleanArray }) {
         return (
           <span key={index}>
             {ph.map((i) => i === item).findIndex((i) => i === true) < 0 ? (
-              <span className="col-2 text-center bg-dark text-uppercase text-light mr-1 ">
+              <span className="col-2 text-center  text-uppercase text-light mr-1 span-puzzle">
                 {booleanArray[index] === true ? item : "   "}{" "}
               </span>
             ) : (

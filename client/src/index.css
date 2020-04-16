@@ -103,3 +103,12 @@ img.leg-rigth {
   left: 92.5%;
   top: 62%;
 }
+.span-puzzle {
+  background-color: #2c3e50;
+}
+.footer {
+  background-color: #2c3e50;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+}

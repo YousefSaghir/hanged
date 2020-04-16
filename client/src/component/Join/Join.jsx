@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Join.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Footer from "../base/Footer";
 export default function Join() {
   const [name, setName] = useState("");
   const [field, setField] = useState("");
@@ -27,7 +28,7 @@ export default function Join() {
           }
           onClick={() => setSliderNumber(0)}
         >
-          Player Online
+          Play Online
         </span>
         <span
           className={
@@ -37,7 +38,7 @@ export default function Join() {
           }
           onClick={() => setSliderNumber(1)}
         >
-          Two Player
+          Two Players
         </span>
         <span
           className={
@@ -47,7 +48,7 @@ export default function Join() {
           }
           onClick={() => setSliderNumber(2)}
         >
-          One Player
+          single Player
         </span>
       </div>
       <div className="join-container">
@@ -60,12 +61,12 @@ export default function Join() {
               : "d-flex join-container-item active1"
           }
         >
-          <div className="slide-join py-5">
-            <h1 className="text-uppercase text-center">Play online</h1>
-            <p className="text-capitalize lead pt-5 pb-5">
+          <div className="slide-join my-5">
+            <h1 className="text-uppercase my-3 text-center">Play online</h1>
+            <p className="text-capitalize my-3 lead pt-5 pb-5">
               enter your name Then Play online <br /> with random player
             </p>
-            <form>
+            <form className="my-5">
               <input
                 className="form-control"
                 type="text"
@@ -89,15 +90,15 @@ export default function Join() {
               </Link>
             </form>
           </div>
-          <div className="slide-join py-5">
-            <h1 className="card-title text-center text-uppercase">
+          <div className="slide-join my-5">
+            <h1 className="card-title my-3 text-center text-uppercase">
               two player
             </h1>
-            <p className="lead text-capitalize pt-2">
-              Insert your name and the name of the field <br /> what you and
+            <p className="lead my-3 text-capitalize pt-2">
+              Insert your name and the name of the field <br /> that you and
               your friend have chosen and you play together.
             </p>
-            <form>
+            <form className="my-5">
               <input
                 className="form-control"
                 type="text"
@@ -131,12 +132,12 @@ export default function Join() {
               </Link>
             </form>
           </div>
-          <div className="slide-join py-5">
-            <h1 className="text-center text-uppercase">one player</h1>
-            <p className="lead text-capitalize pt-5 pb-5">
+          <div className="slide-join my-5">
+            <h1 className="text-center my-3 text-uppercase">one player</h1>
+            <p className="lead text-capitalize my-3 pt-5 pb-5">
               Insert your name, choose the language and start the challenge.
             </p>
-            <form>
+            <form className="my-3">
               <input
                 className="form-control "
                 type="text"
@@ -171,6 +172,7 @@ export default function Join() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

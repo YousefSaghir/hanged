@@ -6,42 +6,12 @@ import * as moment from "moment";
 import AlphabetsEng from "../../alphabets/AlphabetsEng";
 import AlphabetsPuzzle from "../../alphabetsPuzzle/AlphabetsPuzzle";
 import ImgPuzzle from "../../imagePuzzle/ImgPuzzle";
+import Header from "../../base/Header";
+import { lettersIt } from "../../letters";
+import Footer from "../../base/Footer";
 export default class StartGameNet extends Component {
   state = {
-    letters: [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-      "à",
-      "è",
-      "é",
-      "ù",
-      "ò",
-      "ì",
-    ],
+    letters: lettersIt,
     newArray: [],
     booleanArray: [],
     foundLetters: [],
@@ -169,19 +139,8 @@ export default class StartGameNet extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="d-flex justify-content-center flex-wrap text-center container-header">
-          <span className="p-2 text-capitalize">
-            {this.props.players[0].name === this.props.name
-              ? "You"
-              : this.props.players[0].name}
-          </span>
-          <span className="p-2 ">VS</span>
-          <span className="p-2 text-capitalize">
-            {this.props.players[1].name === this.props.name
-              ? "You"
-              : this.props.players[1].name}
-          </span>
-        </div>
+        <Header players={this.props.players} name={this.props.name} />
+        <hr />
         {this.props.result.msg !== undefined ? (
           <p className="text-center text-danger text-capitalize">{`${this.props.result.msg} ${this.props.result.time}`}</p>
         ) : null}
@@ -189,7 +148,7 @@ export default class StartGameNet extends Component {
         {this.state.newArray.length > 0 &&
         this.state.win === false &&
         this.state.finish === false ? (
-          <div className="row pt-5">
+          <div className="row my-md-5">
             <ImgPuzzle
               imageGroup={this.state.imageGroup}
               name={this.props.name}
@@ -218,6 +177,7 @@ export default class StartGameNet extends Component {
             pharse={this.props.myBost}
           />
         ) : null}
+        <Footer />
       </React.Fragment>
     );
   }
