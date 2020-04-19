@@ -1,18 +1,17 @@
 let players = [];
-let n = 0;
-
+let number = 0;
+let field;
 const addPlayer = (id, name) => {
-  if (players.length % 2 === 0) {
-    n++;
-  }
-  let field = `field-${n}`;
+
+
+  field = `field-${Math.floor(number)}`;
+
 
   if (!name) return { error: "Playername and field are required." };
   const player = { id, name, field };
   players.push(player);
+  number += 1 / 2;
 
-  console.log("players72", players);
-  console.log("players73", player);
   return { player };
 };
 
@@ -34,6 +33,12 @@ const removePlayer = vis => {
   players.splice(num, 1);
   return vis;
 };
+
+const handleDecrease = () => {
+  number -= 1 / 2;
+  console.log(number);
+
+}
 
 // two players
 
@@ -68,5 +73,6 @@ module.exports = {
   getPlayer,
   removePlayer,
   addplayerstoField,
-  getTwoPlayerinField
+  getTwoPlayerinField,
+  handleDecrease
 };

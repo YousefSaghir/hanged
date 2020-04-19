@@ -14,7 +14,7 @@ export default function Players({ location }) {
   const [players, setPlayers] = useState({});
   const [result, setResult] = useState({});
 
-  const POINT = "https://impeccato.herokuapp.com/";
+  const POINT = "http://localhost:3200/";
 
   useEffect(() => {
     const { name, field } = queryString.parse(location.search);

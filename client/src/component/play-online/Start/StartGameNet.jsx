@@ -140,11 +140,14 @@ export default class StartGameNet extends Component {
     return (
       <React.Fragment>
         <Header players={this.props.players} name={this.props.name} />
-        <hr />
+
         {this.props.result.msg !== undefined ? (
           <p className="text-center text-danger text-capitalize">{`${this.props.result.msg} ${this.props.result.time}`}</p>
         ) : null}
-
+        {this.props.leave.text ? (
+          <p className="lead text-center text-danger text-capitalize">{`${this.props.leave.text}`}</p>
+        ) : null}
+        <hr />
         {this.state.newArray.length > 0 &&
         this.state.win === false &&
         this.state.finish === false ? (

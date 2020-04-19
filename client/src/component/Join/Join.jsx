@@ -51,7 +51,7 @@ export default function Join() {
           single Player
         </span>
       </div>
-      <div className="join-container">
+      <div className="join-container my-3 my-xl-5 py-xl-2">
         <div
           className={
             sliderNumber === 0
@@ -61,12 +61,12 @@ export default function Join() {
               : "d-flex join-container-item active1"
           }
         >
-          <div className="slide-join my-5">
-            <h1 className="text-uppercase my-3 text-center">Play online</h1>
-            <p className="text-capitalize my-3 lead pt-5 pb-5">
+          <div className="slide-join px-2 my-xl-4">
+            <h1 className="text-uppercase mb-4 text-center">Play online</h1>
+            <p className="text-capitalize my-3 lead py-5">
               enter your name Then Play online <br /> with random player
             </p>
-            <form className="my-5">
+            <form>
               <input
                 className="form-control"
                 type="text"
@@ -84,23 +84,24 @@ export default function Join() {
                   type="submit"
                   className="btn btn-success btn-block mt-2"
                 >
-                  <i className="fas fa-gamepad"></i>
-                  <i className="fas fa-wifi"></i>
+                  <i className="fas mx-2 fa-gamepad"></i>
+                  <i className="fas mx-2 fa-wifi"></i>
                 </button>
               </Link>
             </form>
           </div>
-          <div className="slide-join my-5">
-            <h1 className="card-title my-3 text-center text-uppercase">
-              two player
-            </h1>
-            <p className="lead my-3 text-capitalize pt-2">
+          <div className="slide-join px-2 my-xl-4">
+            <h1 className="mb-4 text-center text-uppercase">two players</h1>
+            <h5 className="my-1 text-center text-capitalize">
+              play with friends
+            </h5>
+            <p className="lead my-2 my-xl-4 text-capitalize py-xl-4 py-2">
               Insert your name and the name of the field <br /> that you and
               your friend have chosen and you play together.
             </p>
-            <form className="my-5">
+            <form>
               <input
-                className="form-control"
+                className="form-control my-1"
                 type="text"
                 placeholder="Write Your Name"
                 onChange={(e) => handleChange(e.target.value.toLowerCase())}
@@ -126,20 +127,23 @@ export default function Join() {
                   className="btn btn-success btn-block mt-2"
                 >
                   {" "}
-                  <i className="fas fa-gamepad"></i>{" "}
-                  <i className="fas fa-gamepad"></i>
+                  <i className="fas mx-2 fa-gamepad"></i>{" "}
+                  <i className="fas mx-2 fa-gamepad"></i>
                 </button>{" "}
               </Link>
             </form>
           </div>
-          <div className="slide-join my-5">
-            <h1 className="text-center my-3 text-uppercase">one player</h1>
-            <p className="lead text-capitalize my-3 pt-5 pb-5">
+          <div className="slide-join px-2 my-xl-4">
+            <h1 className="text-center mb-4 text-uppercase">single player</h1>
+            <h5 className="text-center my-1 text-capitalize">
+              play by yourself
+            </h5>
+            <p className="lead text-capitalize my-3 py-5">
               Insert your name, choose the language and start the challenge.
             </p>
-            <form className="my-3">
+            <form>
               <input
-                className="form-control "
+                className="form-control my-1"
                 type="text"
                 placeholder="Write Your Name"
                 onChange={(e) => handleChange(e.target.value.toLowerCase())}
@@ -165,7 +169,7 @@ export default function Join() {
                   type="submit"
                   className="btn btn-success btn-block mt-2"
                 >
-                  <i className="fas fa-gamepad"></i>
+                  <i className="fas  fa-gamepad"></i>
                 </button>
               </Link>
             </form>

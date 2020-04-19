@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Cairo", sans-serif;
+  font-family: "Indie Flower", cursive !important;
 }
 .container-header {
   color: #3498db;
@@ -105,8 +105,17 @@ img.leg-rigth {
 }
 .span-puzzle {
   background-color: #2c3e50;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+.span-slash {
+  font-size: 25px;
+  height: 30px;
+  line-height: 53px;
 }
 .footer {
+  font-family: "Cairo", sans-serif !important;
   background-color: #2c3e50;
   color: #fff;
   height: 50px;

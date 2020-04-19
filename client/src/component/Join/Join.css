@@ -9,7 +9,7 @@
   color: #ecf0f1;
   line-height: 17px;
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 .join-container {
   height: auto;
@@ -24,15 +24,17 @@
   transition: all 0.75s linear;
 }
 .slide-join {
-  height: 100%;
   width: 100%;
   display: grid;
-  align-content: space-around;
+  align-content: space-between;
   justify-content: center;
 }
 
 .slide-join h1 {
   color: #2980b9;
+}
+.slide-join p {
+  font-weight: 600;
 }
 .slide-join i {
   font-size: 1.5rem !important;

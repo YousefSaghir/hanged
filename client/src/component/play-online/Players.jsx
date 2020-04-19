@@ -13,7 +13,7 @@ export default function Players({ location }) {
   const [count, setCount] = useState(0);
   const [secondCount, setSecondCount] = useState(60);
   const [players, setPlayers] = useState([]);
-  const POINT = "https://impeccato.herokuapp.com/";
+  const POINT = "http://localhost:3200/";
 
   useEffect(() => {
     const { name } = queryString.parse(location.search);
@@ -72,6 +72,7 @@ export default function Players({ location }) {
     socket.on("leaved", (leavedMsg) => {
       setLeave(leavedMsg);
     });
+    console.log(leave);
   }, [leave]);
 
   return !even ? (
@@ -96,6 +97,7 @@ export default function Players({ location }) {
           sendMsg={sendMsg}
           result={result}
           players={players}
+          leave={leave}
         />
       ) : (
         <form>

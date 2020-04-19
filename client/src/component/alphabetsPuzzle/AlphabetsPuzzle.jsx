@@ -1,22 +1,23 @@
 import React from "react";
 
 export default function AlphabetsPuzzle({ pharse, booleanArray }) {
-  let ph = ["'", ".", ",", "?", "!", "#", "@", "|", "&", "%", "$", "/"];
+  let ph = ["'", ".", ",", "?", "!", "#", "@", "|", "&", "%", "$", "/", "’"];
+
   return (
-    <div className="d-flex flex-wrap py-4 px-2">
+    <div className="col-12 d-flex flex-wrap py-2 px-2 mb-xl-3 justify-content-center">
       {pharse.map((item, index) => {
         return (
-          <span key={index}>
+          <React.Fragment key={index}>
             {ph.map((i) => i === item).findIndex((i) => i === true) < 0 ? (
-              <span className="col-2 text-center  text-uppercase text-light mr-1 span-puzzle">
+              <span className="text-center  text-uppercase text-light mr-1 my-1 span-puzzle">
                 {booleanArray[index] === true ? item : "   "}{" "}
               </span>
             ) : (
-              <span className="col-2 text-center text-uppercase text-success mx-1 ">
+              <span className="text-center text-success mx-1 span-slash">
                 {item}
               </span>
             )}
-          </span>
+          </React.Fragment>
         );
       })}
     </div>

@@ -14,21 +14,22 @@ const {
   getPlayer,
   removePlayer,
   addplayerstoField,
-  getTwoPlayerinField
+  getTwoPlayerinField,
+  handleDecrease
 } = require("./players");
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 io.sockets.on("connection", visitor => {
-  console.log("there is new visitor");
+
   visitor.on("new player", (playername, callback) => {
-    console.log(typeof playername, playername);
+
 
     const { err, player } = addPlayer(visitor.id, playername);
-    console.log(player);
+
     const isTrue = findNumber({ player });
-    console.log(isTrue);
+
 
     if (err) return callback(err);
     visitor.join(player.field);
@@ -54,7 +55,7 @@ io.sockets.on("connection", visitor => {
       players: getPlayerInField(player.field)
     });
 
-   
+
   });
 
   visitor.on("put pharse", (pharse, callback) => {
@@ -68,18 +69,18 @@ io.sockets.on("connection", visitor => {
     visitor.broadcast.to(player.field).emit("result", result);
   });
 
-  
+
   // two players
 
   visitor.on("two players", ({ name, field }, callback) => {
-    console.log({ name, field });
+
     const { error, twoPlayer } = addplayerstoField({
       id: visitor.id,
       name,
       field
     });
     if (error) return callback(error);
-    console.log(twoPlayer, "index 79", error);
+
 
     visitor.join(twoPlayer.field);
 
@@ -110,17 +111,19 @@ io.sockets.on("connection", visitor => {
   });
 
   visitor.on("disconnect", () => {
-    console.log("there is disconnected!");
+
 
     const leave = getPlayer(visitor.id);
-    console.log(leave);
 
     visitor.broadcast.to(leave.field).emit("leaved", {
       player: "player",
-      text: `${leave.name} has leaved from game!`
+      text: `${leave.name} left from game!`
     });
     removePlayer(visitor);
+    handleDecrease();
   });
+
+
 });
 
 app.use(cors());
